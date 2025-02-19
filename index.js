@@ -222,8 +222,32 @@ function verificarReservasExpiradas() {
     });
 }
 
+// Função para salvar os dados do aluno
+function salvarDadosAluno() {
+    const dadosAluno = {
+        nome: alunoLogado.nome,
+        matricula: alunoLogado.matricula,
+        pendencia: alunoLogado.pendencia,
+        acessibilidade: alunoLogado.acessibilidade
+    };
+    localStorage.setItem('dadosAluno', JSON.stringify(dadosAluno));
+}
+
+// Função para carregar os dados do aluno
+function carregarDadosAluno() {
+    const dadosAluno = localStorage.getItem('dadosAluno');
+    if (dadosAluno) {
+        const aluno = JSON.parse(dadosAluno);
+        alunoLogado.nome = aluno.nome;
+        alunoLogado.matricula = aluno.matricula;
+        alunoLogado.pendencia = aluno.pendencia;
+        alunoLogado.acessibilidade = aluno.acessibilidade;
+    }
+}
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
+    carregarDadosAluno(); // Carrega os dados do aluno do localStorage
     carregarDados();
     renderizarUserInfo();
     renderizarArmarios();
@@ -235,4 +259,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Verificar reservas expiradas a cada minuto
     setInterval(verificarReservasExpiradas, 60000);
+
+    // Verifica se é a primeira visita do usuário
+    if (!localStorage.getItem('primeiraVisita')) {
+        alert('Bem-vindo! Mudei um pouco o intuito da tarefa para que ficasse mais abrangente e pudésse explorar melhor a tecnologia.');
+        localStorage.setItem('primeiraVisita', 'true');
+    }
+});
+
+document.getElementById('formAluno').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alunoLogado.nome = document.getElementById('nomeAluno').value;
+    alunoLogado.matricula = document.getElementById('matriculaAluno').value;
+    alunoLogado.pendencia = document.getElementById('pendenciaAluno').checked;
+    alunoLogado.acessibilidade = document.getElementById('acessibilidadeAluno').checked;
+
+    salvarDadosAluno(); // Salva os dados do aluno no localStorage
+    renderizarUserInfo();
+    renderizarArmarios();
+    renderizarReservas();
 });

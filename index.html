@@ -8,6 +8,21 @@
 </head>
 <body>
     <div class="container">
+        <!-- Formulário de Informações do Aluno -->
+        <div class="form-aluno">
+            <form id="formAluno">
+                <input type="text" id="nomeAluno" placeholder="Nome do Aluno" required>
+                <input type="text" id="matriculaAluno" placeholder="Matrícula" required>
+                <label>
+                    <input type="checkbox" id="pendenciaAluno"> Com pendência
+                </label>
+                <label>
+                    <input type="checkbox" id="acessibilidadeAluno"> Necessita de armário acessível
+                </label>
+                <button type="submit">Atualizar Aluno</button>
+            </form>
+        </div>
+
         <!-- Informações do Aluno Logado -->
         <div class="user-info" id="userInfo"></div>
         
