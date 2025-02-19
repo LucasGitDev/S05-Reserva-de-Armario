@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Armários - Faculdade</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Informações do Aluno Logado -->
+        <div class="user-info" id="userInfo"></div>
+        
+        <h1>Sistema de Armários</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros">
+            <label>
+                <input type="checkbox" id="filtroAcessivel"> 
+                Mostrar apenas armários acessíveis
+            </label>
+            <label>
+                <input type="checkbox" id="filtroDisponiveis"> 
+                Mostrar apenas disponíveis
+            </label>
+        </div>
+
+        <!-- Grid de Armários -->
+        <div class="armarios-grid" id="armariosGrid"></div>
+
+        <!-- Lista de Reservas -->
+        <div class="reservas">
+            <h2>Minhas Reservas</h2>
+            <div id="reservasLista"></div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
